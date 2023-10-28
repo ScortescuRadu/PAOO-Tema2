@@ -4,27 +4,35 @@
 #include<iostream>
 #include <utility>
 #include<string.h>
+#include "Subject/Subject.h"
 using namespace std;
 
 class Student {
 private:
-    string name;
+    string firstName;
+    string lastName;
+    string email;
     int age;
+    Subject subjects[];
 public:
-    Student(string studentName, int studentAge)
-    {
-        name = std::move(studentName);
-        age = studentAge;
-    }
+    Student(string firstName,
+            string lastName,
+            string email,
+            int age,
+            Subject subjects[])
+            :firstName(std::move(firstName))
+            ,lastName(std::move(lastName))
+            ,email(std::move(email))
+            ,age(age)
+            ,subjects(subjects){};
     ~Student()
     {
         cout << "after all\n";
-        name = "";
         age = 0;
     }
     Student(Student &t);
     void displayData();
-    string getName();
+    string getFirstName();
     int getAge();
 };
 

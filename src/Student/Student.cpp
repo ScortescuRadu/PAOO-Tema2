@@ -2,17 +2,24 @@
 
 Student::Student(Student &t) {
     age=t.age;
-    name=t.name;
+    firstName=t.firstName;
+    lastName=t.lastName;
+    email=t.email;
+    subjects=t.subjects;
 }
 
 void Student::displayData() {
-    cout << name << " " << age << "\n";
+    cout << firstName << " " << lastName << "[" << age << "] is enrolled to:";
+    for (Subject it : subjects)
+    {
+
+    }
 }
 
 int Student::getAge() {
     return age;
 }
 
-string Student::getName() {
-    return name;
+string Student::getFirstName() {
+    return firstName;
 }
