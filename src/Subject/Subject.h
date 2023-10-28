@@ -9,13 +9,14 @@ using namespace std;
 class Subject {
 private:
     string title;
-    string professor;
+    string *professors;
     std::vector<int> grades;
 public:
     Subject(string  title,
-            string  professor,
-            std::vector<int> grades);;
+            string  *professors,
+            std::vector<int> grades);
     ~Subject() = default;
+    void printInfo();
 };
 
 #endif //PAOO_TEMA2_SUBJECT_H
