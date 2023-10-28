@@ -1,16 +1,5 @@
 #include "Student.h"
 
-Student::Student(Student &t) {
-    age=t.age;
-    firstName=t.firstName;
-    lastName=t.lastName;
-    email=t.email;
-    nrSubjects=t.nrSubjects;
-    subjects=t.subjects;
-
-    // memcpy(newarray dynArray, sizeof *newArray * arraySize);
-}
-
 void Student::displayData() {
     cout << firstName << " " << lastName << "[" << age << "] is enrolled to:" << endl;
     for (int it=0; it < nrSubjects; it++)

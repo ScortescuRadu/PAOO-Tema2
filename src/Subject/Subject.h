@@ -9,13 +9,20 @@ using namespace std;
 class Subject {
 private:
     string title;
-    string *professors;
+    string *professors{};
     std::vector<int> grades;
 public:
     Subject(string  title,
             string  *professors,
             std::vector<int> grades);
-    ~Subject() = default;
+    Subject(const Subject& t);
+    Subject()=default;
+    ~Subject()
+    {
+        delete[] professors;
+        // vector destruction is handled automatically
+        cout << "Subject object memory freed for:" << title << endl;
+    }
     void printInfo();
 };
 

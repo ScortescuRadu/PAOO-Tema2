@@ -5,7 +5,24 @@
 Subject::Subject(string  title, string  *professors, std::vector<int> grades)
         :title(std::move(title))
         ,professors(professors)
-        ,grades(std::move(grades)) {};
+        ,grades(std::move(grades)) {
+    cout << "Subject constructor called" << endl;
+};
+
+Subject::Subject(const Subject &t) {
+    cout << "Subject copy constructor called for " << t.title <<endl;
+    title = t.title;
+
+    // Deep copy the professors string
+    if (t.professors != nullptr) {
+        professors = new string(*(t.professors));
+    } else {
+        professors = nullptr;
+    }
+
+    grades = t.grades;
+}
+
 
 void Subject::printInfo() {
     cout << title << ", with tutor/s: ";
