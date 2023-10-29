@@ -29,17 +29,20 @@ int main() {
     Student s3 = Student(s1);
     s3.setLastName("Popescu-Anghel");
 
-    Student s4 = s1; // shallow copy
+    // shallow copy of subjects
+    Student s4 = Student("Andrei","Popescu","andrei.popescu@gmail.com",24,3,subjects1,true);
     s4.setLastName("Popescu-Anghel-Marian");
-    s1.setAge(30);
 
-    s1.displayData(); // age 30
+    subjects1[0].setTitle("History"); // this will change the subjects[0] of all students associated to subjects1
+    // we need to deepcopy the subjects parameter or move it to avoid this linkage
+
+    s1.displayData();
     s2.displayData();
     s3.displayData();
-    s4.displayData(); // age 30 due to shallow copy
+    s4.displayData(); // subjects[0] is History due to shallow copy of subjects parameter
 
     Student s5 = std::move(s1);
-    //s1.displayData();
+    //s1.displayData(); // is empty
     s5.displayData();
 
     cout << "Automatic call of destructors" << endl << endl;

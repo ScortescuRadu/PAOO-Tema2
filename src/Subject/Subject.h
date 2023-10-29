@@ -24,6 +24,8 @@ public:
         cout << "Subject object memory freed for:" << title << endl;
     }
     void printInfo();
+    void setTitle(string newTitle);
+    string getTitle();
 };
 
 #endif //PAOO_TEMA2_SUBJECT_H

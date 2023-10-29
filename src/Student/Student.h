@@ -26,10 +26,29 @@ public:
             ,lastName(std::move(lastName))
             ,email(std::move(email))
             ,age(age)
-            ,nrSubjects(nrSubjects)
-            ,subjects(subjects){
+            ,nrSubjects(nrSubjects) {
         cout << "Student constructor called" << endl;
+        // Allocate memory and deep copy the subjects array
+        this->subjects = new Subject[nrSubjects];
+        for (int i = 0; i < nrSubjects; i++) {
+            this->subjects[i] = subjects[i];
+        }
     };
+
+    Student(string firstName,
+            string lastName,
+            string email,
+            int age,
+            int nrSubjects,
+            Subject *subjects,
+            bool test)
+            :firstName(std::move(firstName))
+            ,lastName(std::move(lastName))
+            ,email(std::move(email))
+            ,age(age)
+            ,nrSubjects(nrSubjects)
+            ,subjects(subjects){};
+
     Student(Student&& other) noexcept
             : firstName(std::move(other.firstName)),
               lastName(std::move(other.lastName)),
@@ -42,19 +61,6 @@ public:
         other.subjects = nullptr;
         other.nrSubjects = 0;
     }
-
-//    Student(string firstName, string lastName, string email, int age, int nrSubjects, Subject* sourceSubjects)
-//            : firstName(std::move(firstName))
-//              ,lastName(std::move(lastName))
-//              ,email(std::move(email))
-//              ,age(age)
-//              ,nrSubjects(nrSubjects) {
-//        // Allocate memory and deep copy the subjects array
-//        subjects = new Subject[nrSubjects];
-//        for (int i = 0; i < nrSubjects; i++) {
-//            subjects[i] = Subject(sourceSubjects[i]);
-//        }
-//    }
 
     Student(Student &t){
         cout << "Student copy constructor called" << endl;

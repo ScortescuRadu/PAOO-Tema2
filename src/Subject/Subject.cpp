@@ -23,7 +23,6 @@ Subject::Subject(const Subject &t) {
     grades = t.grades;
 }
 
-
 void Subject::printInfo() {
     cout << title << ", with tutor/s: ";
     for (int it = 0; it < 2; it++){
@@ -34,4 +33,12 @@ void Subject::printInfo() {
         cout << it << " ";
     }
     cout << endl;
+}
+
+void Subject::setTitle(std::string newTitle) {
+    title=std::move(newTitle);
+}
+
+string Subject::getTitle() {
+    return title;
 }
